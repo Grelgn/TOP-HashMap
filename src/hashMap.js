@@ -1,9 +1,9 @@
 export default class HashMap {
-    constructor() {
-        this.bucketSize = 16;
-        this.buckets = new Array(this.bucketSize).fill(null);
-		this.loadFactor = 0.75
-    }
+	constructor() {
+		this.bucketSize = 16;
+		this.buckets = new Array(this.bucketSize).fill(null);
+		this.loadFactor = 0.75;
+	}
 
 	hash(key) {
 		let hashCode = 0;
@@ -29,7 +29,7 @@ export default class HashMap {
 
 	has(key) {
 		const hashCode = this.hash(key);
-		return this.buckets[hashCode] != null
+		return this.buckets[hashCode] != null;
 	}
 
 	remove(key) {
@@ -39,5 +39,19 @@ export default class HashMap {
 			return true;
 		}
 		return false;
+	}
+
+	length() {
+		let length = 0;
+		for (let i = 0; i < this.buckets.length; i++) {
+			if (this.buckets[i] != null) length++;
+		}
+		return length;
+	}
+
+	clear() {
+		for (let i = 0; i < this.buckets.length; i++) {
+			this.buckets[i] = null;
+		}
 	}
 }

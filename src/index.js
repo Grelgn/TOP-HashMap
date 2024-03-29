@@ -22,3 +22,8 @@ console.log(hashTest.buckets);
 console.log(hashTest.remove("testing"));
 console.log(hashTest.remove("apple"));
 console.log(hashTest.buckets);
+
+console.log(hashTest.length());
+
+hashTest.clear();
+console.log(hashTest.buckets);
