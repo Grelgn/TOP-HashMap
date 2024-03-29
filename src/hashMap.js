@@ -19,7 +19,7 @@ export default class HashMap {
 
 	set(key, value) {
 		const hashCode = this.hash(key);
-		this.buckets[hashCode] = value;
+		this.buckets[hashCode] = {[key]: value};
 	}
 
 	get(key) {
@@ -53,5 +53,35 @@ export default class HashMap {
 		for (let i = 0; i < this.buckets.length; i++) {
 			this.buckets[i] = null;
 		}
+	}
+
+	keys() {
+		const arr = [];
+		for (let i = 0; i < this.buckets.length; i++) {
+			if (this.buckets[i] != null) {
+				arr.push(Object.keys(this.buckets[i])); 
+			}
+		}
+		return arr;
+	}
+
+	values() {
+		const arr = [];
+		for (let i = 0; i < this.buckets.length; i++) {
+			if (this.buckets[i] != null) {
+				arr.push(Object.values(this.buckets[i])); 
+			}
+		}
+		return arr;
+	}
+
+	entries() {
+		const arr = [];
+		for (let i = 0; i < this.buckets.length; i++) {
+			if (this.buckets[i] != null) {
+				arr.push(Object.entries(this.buckets[i])); 
+			}
+		}
+		return arr;
 	}
 }

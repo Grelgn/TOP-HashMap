@@ -25,5 +25,9 @@ console.log(hashTest.buckets);
 
 console.log(hashTest.length());
 
+console.log(hashTest.keys());
+console.log(hashTest.values());
+console.log(hashTest.entries());
+
 hashTest.clear();
 console.log(hashTest.buckets);
