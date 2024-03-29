@@ -20,10 +20,30 @@ export default class HashMap {
 	}
 
 	set(key, value) {
+		this.growBuckets();
 		const hashCode = this.hash(key);
 		if (this.buckets[hashCode] != null) {
 			this.buckets[hashCode].append(key, value);
 		} else this.buckets[hashCode] = new LinkedList(key, value);
+	}
+
+	growBuckets() {
+		let fullBuckets = this.bucketSize;
+		for (let i = 0; i < this.buckets.length; i++) {
+			if (this.buckets[i] == null) {
+				fullBuckets--;
+			}
+		}
+		if (fullBuckets >= this.bucketSize * this.loadFactor) {
+			const entries = this.entries();
+
+			this.bucketSize *= 2;
+			this.buckets = new Array(this.bucketSize).fill(null);
+
+			entries.forEach((element) => {
+				this.set(element[0], element[1]);
+			});
+		}
 	}
 
 	get(key) {

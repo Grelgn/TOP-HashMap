@@ -2,36 +2,6 @@ import HashMap from "./hashMap";
 
 const hashTest = new HashMap();
 
-// const test = hashTest.hash("hello");
-
-// console.log(test);
-
-// hashTest.set("key", "value");
-
-// console.log(hashTest.buckets);
-
-// console.log(hashTest.get("key"));
-
-// console.log(hashTest.has("key"));
-// console.log(hashTest.has("notkey"));
-
-// hashTest.set("test", "123");
-// hashTest.set("testing", "345");
-// console.log(hashTest.buckets);
-
-// console.log(hashTest.remove("testing"));
-// console.log(hashTest.remove("apple"));
-// console.log(hashTest.buckets);
-
-// console.log(hashTest.length());
-
-// console.log(hashTest.keys());
-// console.log(hashTest.values());
-// console.log(hashTest.entries());
-
-// hashTest.clear();
-// console.log(hashTest.buckets);
-
 hashTest.set("one", "1");
 hashTest.set("two", "2");
 hashTest.set("three", "3");
@@ -66,4 +36,27 @@ console.log(hashTest.length());
 
 console.log(hashTest.keys());
 console.log(hashTest.values());
+console.log(hashTest.entries());
+
+hashTest.set("six", "6");
+hashTest.set("eleven", "11");
+hashTest.set("twelve", "12");
+hashTest.set("thirteen", "13");
+hashTest.set("fourteen", "14");
+hashTest.set("fifteen", "15");
+hashTest.set("sixteen", "16");
+
+console.log(hashTest.buckets);
+console.log(hashTest.entries());
+
+hashTest.set("seventeen", "17");
+hashTest.set("eighteen", "18");
+hashTest.set("nineteen", "19");
+hashTest.set("twenty", "20");
+hashTest.set("twentyone", "21");
+hashTest.set("twentytwo", "22");
+hashTest.set("twentythree", "23");
+hashTest.set("twentyfour", "24");
+
+console.log(hashTest.buckets);
 console.log(hashTest.entries());
