@@ -48,11 +48,11 @@ export default class HashMap {
 			}
 			console.log(arr);
 
-			const newArr = arr.filter((element) => element[0] !== key)
+			const newArr = arr.filter((element) => element[0] !== key);
 			console.log(newArr);
 
 			this.buckets[hashCode] = null;
-			newArr.forEach(element => {
+			newArr.forEach((element) => {
 				this.set(element[0], element[1]);
 			});
 
@@ -64,7 +64,13 @@ export default class HashMap {
 	length() {
 		let length = 0;
 		for (let i = 0; i < this.buckets.length; i++) {
-			if (this.buckets[i] != null) length++;
+			if (this.buckets[i] !== null) {
+				let currentNode = this.buckets[i].head;
+				while (currentNode !== null) {
+					length++;
+					currentNode = currentNode.nextNode;
+				}
+			}
 		}
 		return length;
 	}
@@ -79,7 +85,11 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.keys(this.buckets[i].value)); 
+				let currentNode = this.buckets[i].head;
+				while (currentNode !== null) {
+					arr.push(currentNode.key);
+					currentNode = currentNode.nextNode;
+				}
 			}
 		}
 		return arr;
@@ -89,7 +99,11 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.values(this.buckets[i].value)); 
+				let currentNode = this.buckets[i].head;
+				while (currentNode !== null) {
+					arr.push(currentNode.value);
+					currentNode = currentNode.nextNode;
+				}
 			}
 		}
 		return arr;
@@ -99,7 +113,11 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.entries(this.buckets[i].value)); 
+				let currentNode = this.buckets[i].head;
+				while (currentNode !== null) {
+					arr.push([currentNode.key, currentNode.value]);
+					currentNode = currentNode.nextNode;
+				}
 			}
 		}
 		return arr;

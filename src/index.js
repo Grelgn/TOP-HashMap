@@ -58,3 +58,12 @@ console.log(hashTest.has("nineteen"));
 console.log(hashTest.remove("six"));
 // console.log(hashTest.remove("nine"));
 console.log(hashTest.buckets);
+
+console.log(hashTest.length());
+
+// hashTest.clear();
+// console.log(hashTest.buckets);
+
+console.log(hashTest.keys());
+console.log(hashTest.values());
+console.log(hashTest.entries());
