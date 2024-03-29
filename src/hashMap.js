@@ -26,4 +26,18 @@ export default class HashMap {
 		const hashCode = this.hash(key);
 		return this.buckets[hashCode];
 	}
+
+	has(key) {
+		const hashCode = this.hash(key);
+		return this.buckets[hashCode] != null
+	}
+
+	remove(key) {
+		if (this.has(key)) {
+			const hashCode = this.hash(key);
+			this.buckets[hashCode] = null;
+			return true;
+		}
+		return false;
+	}
 }
