@@ -26,4 +26,15 @@ export default class LinkedList {
 		}
 		return null;
 	}
+
+	contains(key) {
+		let currentNode = this.head;
+		while (currentNode !== null) {
+			if (currentNode.key === key) {
+				return true;
+			}
+			currentNode = currentNode.nextNode;
+		}
+		return false;
+	}
 }

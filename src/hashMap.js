@@ -33,13 +33,29 @@ export default class HashMap {
 
 	has(key) {
 		const hashCode = this.hash(key);
-		return this.buckets[hashCode] != null;
+		if (this.buckets[hashCode] == null) return false;
+		return this.buckets[hashCode].contains(key);
 	}
 
 	remove(key) {
 		if (this.has(key)) {
 			const hashCode = this.hash(key);
+			let currentNode = this.buckets[hashCode].head;
+			const arr = [];
+			while (currentNode !== null) {
+				arr.push([currentNode.key, currentNode.value]);
+				currentNode = currentNode.nextNode;
+			}
+			console.log(arr);
+
+			const newArr = arr.filter((element) => element[0] !== key)
+			console.log(newArr);
+
 			this.buckets[hashCode] = null;
+			newArr.forEach(element => {
+				this.set(element[0], element[1]);
+			});
+
 			return true;
 		}
 		return false;
