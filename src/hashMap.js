@@ -1,3 +1,5 @@
+import LinkedList from "./linkedList";
+
 export default class HashMap {
 	constructor() {
 		this.bucketSize = 16;
@@ -19,12 +21,14 @@ export default class HashMap {
 
 	set(key, value) {
 		const hashCode = this.hash(key);
-		this.buckets[hashCode] = {[key]: value};
+		if (this.buckets[hashCode] != null) {
+			this.buckets[hashCode].append(key, value);
+		} else this.buckets[hashCode] = new LinkedList(key, value);
 	}
 
 	get(key) {
 		const hashCode = this.hash(key);
-		return this.buckets[hashCode];
+		return this.buckets[hashCode].find(key);
 	}
 
 	has(key) {
@@ -59,7 +63,7 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.keys(this.buckets[i])); 
+				arr.push(Object.keys(this.buckets[i].value)); 
 			}
 		}
 		return arr;
@@ -69,7 +73,7 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.values(this.buckets[i])); 
+				arr.push(Object.values(this.buckets[i].value)); 
 			}
 		}
 		return arr;
@@ -79,7 +83,7 @@ export default class HashMap {
 		const arr = [];
 		for (let i = 0; i < this.buckets.length; i++) {
 			if (this.buckets[i] != null) {
-				arr.push(Object.entries(this.buckets[i])); 
+				arr.push(Object.entries(this.buckets[i].value)); 
 			}
 		}
 		return arr;
